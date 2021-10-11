@@ -187,12 +187,12 @@ const Contacts = () => {
     setContactModalOpen(true);
   };
 
-  const handleCheckBoxDeleteBatch = (contact, isChecked) => 
+  const handleCheckBoxDeleteBatch = (contact, checked) => 
   {
     
-    if(isChecked === true)
+    if(checked === true)
     {
-      console.log(isChecked);
+      
       lista.push(contact.id);
     }
     else
@@ -200,7 +200,7 @@ const Contacts = () => {
         lista = lista.filter(item => item !== contact.id);
     } 
 
-    console.log(lista.length);
+   
   };
 
    const handleBtnDeleteBatch = () => {
@@ -406,9 +406,9 @@ const Contacts = () => {
                       )}
                       />
                     <Checkbox
-                        checked={contact.checked} 
+                        checked={checked.contact} 
                         onChange={(e) => handleChange(e, contact)}
-                        // onClick={(x) => handleCheckBoxDeleteBatch(contact, x)}      
+                          
                     />
                   </TableCell>
                 </TableRow>
