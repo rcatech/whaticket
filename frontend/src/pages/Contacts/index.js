@@ -34,6 +34,9 @@ import MainContainer from "../../components/MainContainer";
 import toastError from "../../errors/toastError";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { Can } from "../../components/Can";
+import { Checkbox } from "@material-ui/core";
+
+let lista = [];
 
 const reducer = (state, action) => {
   if (action.type === "LOAD_CONTACTS") {
@@ -102,7 +105,9 @@ const Contacts = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [deletingContact, setDeletingContact] = useState(null);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirmOpenCb, setConfirmOpenCb] = useState(false);
   const [hasMore, setHasMore] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     dispatch({ type: "RESET" });
@@ -182,6 +187,39 @@ const Contacts = () => {
     setContactModalOpen(true);
   };
 
+  const handleCheckBoxDeleteBatch = (contact, checked) => 
+  {
+    
+    if(checked === true)
+    {
+      
+      lista.push(contact.id);
+    }
+    else
+    {
+        lista = lista.filter(item => item !== contact.id);
+    } 
+
+   
+  };
+
+   const handleBtnDeleteBatch = () => {
+    try {
+      
+      lista.forEach((item) => 
+        {
+            api.delete(`/contacts/${item}`);
+        })
+      
+      toast.success(i18n.t("contacts.toasts.deleted"));
+    } catch (err) {
+      toastError(err);
+    }
+    lista = [];
+    setSearchParam("");
+    setPageNumber(1);
+   };
+
   const handleDeleteContact = async (contactId) => {
     try {
       await api.delete(`/contacts/${contactId}`);
@@ -215,6 +253,11 @@ const Contacts = () => {
     }
   };
 
+  const handleChange = (event, contact) => {
+    setChecked(event.target.checked);
+    handleCheckBoxDeleteBatch(contact, event.target.checked);
+  };
+
   return (
     <MainContainer className={classes.mainContainer}>
       <ContactModal
@@ -242,6 +285,24 @@ const Contacts = () => {
         {deletingContact
           ? `${i18n.t("contacts.confirmationModal.deleteMessage")}`
           : `${i18n.t("contacts.confirmationModal.importMessage")}`}
+      </ConfirmationModal>
+      <ConfirmationModal
+        title={
+          deletingContact
+            ? `${i18n.t("contacts.confirmationModal.deleteTitle")} ${
+                deletingContact.name
+              }?`
+            : `${i18n.t("contacts.confirmationModal.deleteTitle")}`
+        }
+        open={confirmOpenCb}
+        onClose={setConfirmOpenCb}
+        onConfirm={(e) =>
+          handleBtnDeleteBatch()
+        }
+      >
+        {deletingContact
+          ? `${i18n.t("contacts.confirmationModal.deleteMessage")}`
+          : `${i18n.t("contacts.confirmationModal.deleteMessage")}`}
       </ConfirmationModal>
       <MainHeader>
         <Title>{i18n.t("contacts.title")}</Title>
@@ -276,9 +337,12 @@ const Contacts = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={handleOpenContactModal}
+            onClick={(e) => {
+              setConfirmOpenCb(true);
+              
+            }}
           >
-            {i18n.t("contacts.buttons.select")}
+            {i18n.t("contacts.buttons.batchDelete")}
           </Button>
         </MainHeaderButtonsWrapper>
       </MainHeader>
@@ -340,6 +404,11 @@ const Contacts = () => {
                           <DeleteOutlineIcon />
                         </IconButton>
                       )}
+                      />
+                    <Checkbox
+                        checked={checked.contact} 
+                        onChange={(e) => handleChange(e, contact)}
+                          
                     />
                   </TableCell>
                 </TableRow>

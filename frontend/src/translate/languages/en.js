@@ -123,6 +123,7 @@ const messages = {
         buttons: {
           import: "Import Contacts",
           add: "Add Contact",
+          batchDelete: "Delete Batch"
         },
         table: {
           name: "Name",
