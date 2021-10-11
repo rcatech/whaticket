@@ -278,6 +278,7 @@ const Contacts = () => {
             color="primary"
             onClick={handleOpenContactModal}
           >
+            "asf"
             {i18n.t("contacts.buttons.select")}
           </Button>
         </MainHeaderButtonsWrapper>
