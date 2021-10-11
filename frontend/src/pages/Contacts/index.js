@@ -273,6 +273,13 @@ const Contacts = () => {
           >
             {i18n.t("contacts.buttons.add")}
           </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleOpenContactModal}
+          >
+            Deletar em Lote
+          </Button>
         </MainHeaderButtonsWrapper>
       </MainHeader>
       <Paper
