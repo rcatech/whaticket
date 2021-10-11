@@ -278,7 +278,11 @@ const Contacts = () => {
             color="primary"
             onClick={handleOpenContactModal}
           >
+<<<<<<< HEAD
             Deletar em Lote
+=======
+            {i18n.t("contacts.buttons.select")}
+>>>>>>> af3725866ced56e6f27e8b65814c3d75fa9a2562
           </Button>
         </MainHeaderButtonsWrapper>
       </MainHeader>
