@@ -342,12 +342,7 @@ const Contacts = () => {
               
             }}
           >
-<<<<<<< HEAD
             {i18n.t("contacts.buttons.batchDelete")}
-=======
-            "asf"
-            {i18n.t("contacts.buttons.select")}
->>>>>>> fe6d5ceae70a8fe5a0920cb67fb98ac7620723ed
           </Button>
         </MainHeaderButtonsWrapper>
       </MainHeader>
