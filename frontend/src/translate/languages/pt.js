@@ -124,6 +124,7 @@ const messages = {
         buttons: {
           import: "Importar Contatos",
           add: "Adicionar Contato",
+          batchDelete: "Deletar em Lote"
         },
         table: {
           name: "Nome",
