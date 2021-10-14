@@ -3,11 +3,6 @@
 	"name": "WhaTicket",
 	"icons": [
 		{
-			"src": "favicon.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
-			"type": "image/x-icon"
-		},
-		{
 			"src": "/android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png"
@@ -16,6 +11,11 @@
 			"src": "/Logo2@2x.png",
 			"sizes": "880x370",
 			"type": "image/png"
+		},
+		{
+			"src": "Logo.ico",
+			"sizes": "256x108",
+			"type": "image/x-ico"
 		}
 	],
 	"start_url": ".",
