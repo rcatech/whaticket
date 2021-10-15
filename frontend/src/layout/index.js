@@ -136,6 +136,7 @@ const LoggedInLayout = ({ children }) => {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
     setMenuOpen(true);
+
   };
 
   const handleCloseMenu = () => {
@@ -149,6 +150,7 @@ const LoggedInLayout = ({ children }) => {
   };
 
   const handleClickLogout = () => {
+    document.getElementById("idImage").style.visibility = 'visible';
     handleCloseMenu();
     handleLogout();
   };

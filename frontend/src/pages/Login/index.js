@@ -110,6 +110,7 @@ const Login = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => document.getElementById("idImage").style.visibility = 'hidden'}
           >
             {i18n.t("login.buttons.submit")}
           </Button>
