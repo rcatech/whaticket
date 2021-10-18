@@ -218,7 +218,7 @@ const LoggedInLayout = ({ children }) => {
             noWrap
             className={classes.title}
           >
-            RCA
+            R-Chat
           </Typography>
           {user.id && <NotificationsPopOver />}
 
