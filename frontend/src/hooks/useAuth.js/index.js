@@ -20,6 +20,7 @@ const useAuth = () => {
 			if (token) {
 				config.headers["Authorization"] = `Bearer ${JSON.parse(token)}`;
 				setIsAuth(true);
+				document.getElementById("idImage").style.visibility = 'hidden';
 			}
 			return config;
 		},
@@ -103,6 +104,7 @@ const useAuth = () => {
 	};
 
 	const handleLogout = async () => {
+		
 		setLoading(true);
 
 		try {
@@ -111,8 +113,10 @@ const useAuth = () => {
 			setUser({});
 			localStorage.removeItem("token");
 			api.defaults.headers.Authorization = undefined;
+			document.getElementById("idImage").style.visibility = 'visible';
 			setLoading(false);
 			history.push("/login");
+			
 		} catch (err) {
 			toastError(err);
 			setLoading(false);

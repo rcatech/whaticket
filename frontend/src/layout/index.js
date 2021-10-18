@@ -150,7 +150,6 @@ const LoggedInLayout = ({ children }) => {
   };
 
   const handleClickLogout = () => {
-    document.getElementById("idImage").style.visibility = 'visible';
     handleCloseMenu();
     handleLogout();
   };
