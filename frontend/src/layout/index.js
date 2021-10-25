@@ -211,6 +211,7 @@ const LoggedInLayout = ({ children }) => {
           >
             <MenuIcon />
           </IconButton>
+          <img alt=" " src="favicon.ico" width="5%"/>
           <Typography
             component="h1"
             variant="h6"
@@ -221,7 +222,6 @@ const LoggedInLayout = ({ children }) => {
             R-Chat
           </Typography>
           {user.id && <NotificationsPopOver />}
-
           <div>
             <IconButton
               aria-label="account of current user"
